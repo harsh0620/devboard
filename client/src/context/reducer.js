@@ -514,7 +514,14 @@ const reducer = (state, action) => {
     };
   }
   if (action.type === RESET_TIMERS) {
-    return initialState;
+    const initialState = {
+      timerLabel: "Session",
+      busyIndicator: false,
+      breakValue: 10,
+      sessionValue: 50,
+      timerValue: 3000,
+    };
+    return { ...state, ...initialState };
   }
   if (action.type === CREATE_BOOKMARK_BEGIN) {
     return { ...state, isLoading: true };

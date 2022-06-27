@@ -87,10 +87,10 @@ const Landing = () => {
               <div className="row">
                 <div className="col-md-8 m-b-30">
                   <div className="footer-title m-t-5 m-b-20 p-b-8">
-                    About DevGarage
+                    About DevBoard
                   </div>
                   <p className="white-text" style={{ textAlign: "left" }}>
-                    DevBoard is a developer's dashboard built with the halp of
+                    DevBoard is a developer's dashboard built with the help of
                     NodeJs, ExpressJs, MongoDb, ReactJs. It provides Todolist,
                     Logger, Pomodoro clock, Job Application Maintainer, Work
                     graph and many more.Try this out.
