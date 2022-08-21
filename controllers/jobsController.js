@@ -74,16 +74,16 @@ const getAllJobs = async (req, res) => {
   //
 
   // setup pagination
-  const page = Number(req.query.page) || 1;
-  const limit = Number(req.query.limit) || 10;
-  const skip = (page - 1) * limit;
+  // const page = Number(req.query.page) || 1;
+  // const limit = Number(req.query.limit) || 10;
+  // const skip = (page - 1) * limit;
 
-  result = result.skip(skip).limit(limit);
+  // result = result.skip(skip).limit(limit);
 
   const jobs = await result;
 
   const totalJobs = await Job.countDocuments(queryObject);
-  const numOfPages = Math.ceil(totalJobs / limit);
+  const numOfPages = 1;
 
   res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages });
 };
@@ -157,7 +157,7 @@ const showStats = async (req, res) => {
       return { date, count };
     })
     .reverse();
-  let contributions = await Log.aggregate([
+  let contributionsLog = await Log.aggregate([
     {
       $match: {
         createdBy: mongoose.Types.ObjectId(req.user.userId),
@@ -180,6 +180,94 @@ const showStats = async (req, res) => {
       },
     },
   ]);
+  let contributionsTodo = await Todo.aggregate([
+    {
+      $match: {
+        createdBy: mongoose.Types.ObjectId(req.user.userId),
+      },
+    },
+    {
+      $group: {
+        _id: {
+          year: {
+            $year: "$createdAt",
+          },
+          month: {
+            $month: "$createdAt",
+          },
+          date: {
+            $dayOfMonth: "$createdAt",
+          },
+        },
+        count: { $sum: 1 },
+      },
+    },
+  ]);
+  let contributionsJob = await Job.aggregate([
+    {
+      $match: {
+        createdBy: mongoose.Types.ObjectId(req.user.userId),
+      },
+    },
+    {
+      $group: {
+        _id: {
+          year: {
+            $year: "$createdAt",
+          },
+          month: {
+            $month: "$createdAt",
+          },
+          date: {
+            $dayOfMonth: "$createdAt",
+          },
+        },
+        count: { $sum: 1 },
+      },
+    },
+  ]);
+  let values = {};
+  const map = new Map(Object.entries(values));
+
+  contributionsJob.map((data) => {
+    let month = data._id.month;
+    if (data._id.month < 10) {
+      month = `0${data._id.month}`;
+    }
+    let dates = data._id.date;
+    if (data._id.date < 10) {
+      dates = `0${data._id.date}`;
+    }
+    map.set(`${data._id.year}-${month}-${dates}`, data.count);
+    return 0;
+  });
+  contributionsLog.map((data) => {
+    let month = data._id.month;
+    if (data._id.month < 10) {
+      month = `0${data._id.month}`;
+    }
+    let dates = data._id.date;
+    if (data._id.date < 10) {
+      dates = `0${data._id.date}`;
+    }
+    map.set(`${data._id.year}-${month}-${dates}`, data.count);
+    return 0;
+  });
+  contributionsTodo.map((data) => {
+    let month = data._id.month;
+    if (data._id.month < 10) {
+      month = `0${data._id.month}`;
+    }
+    let dates = data._id.date;
+    if (data._id.date < 10) {
+      dates = `0${data._id.date}`;
+    }
+    map.set(`${data._id.year}-${month}-${dates}`, data.count);
+    return 0;
+  });
+  values = Object.fromEntries(map);
+  let contributions = values;
+
   let todo = await Todo.aggregate([
     {
       $match: {
