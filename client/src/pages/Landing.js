@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Marquee from "react-fast-marquee";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Main from "../assets/images/main-alternative.svg";
 import Wrapper from "../assets/wrappers/LandingPage";
 import { Logo } from "../components";
-import Todo from "../assets/images/todo.svg";
-import Log from "../assets/images/log.svg";
-import Pomodoro from "../assets/images/pomodoro.svg";
+import Todo0 from "../assets/images/Landing-Todo-0.png";
+import Log0 from "../assets/images/Landing-Log-0.png";
+import Log1 from "../assets/images/Landing-Log-1.png";
+import Clock0 from "../assets/images/Landing-Clock-0.png";
+import Clock1 from "../assets/images/Landing-Clock-1.png";
+import Todo1 from "../assets/images/Landing-Todo-1.png";
+import Todo2 from "../assets/images/Landing-Todo-2.png";
 import Job from "../assets/images/job.svg";
 import Bookmark from "../assets/images/bookmark.svg";
 import Activity from "../assets/images/workgraph.svg";
@@ -32,7 +38,32 @@ const Landing = () => {
         <img src={Main} alt="DevBoard" className="img main-img"></img>
       </div>
       <div className="container page">
-        <img src={Todo} alt="DevBoard" className="img main-img"></img>
+        <Marquee
+          gradient={false}
+          speed={180}
+          pauseOnHover={true}
+          pauseOnClick={true}
+          delay={0}
+          play={true}
+          direction="left"
+        >
+          <img
+            src={Todo0}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+          <img
+            src={Todo1}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+          <img
+            src={Todo2}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+        </Marquee>
+
         <div className="info">
           <h1>Todo List</h1>
           <h3>Prioritize your day with the help of Todo List</h3>
@@ -46,10 +77,48 @@ const Landing = () => {
             to re-train your brains to focus.
           </h3>
         </div>
-        <img src={Pomodoro} alt="DevBoard" className="img main-img"></img>
+        <Marquee
+          gradient={false}
+          speed={80}
+          pauseOnHover={true}
+          pauseOnClick={true}
+          delay={0}
+          play={true}
+          direction="left"
+        >
+          <img
+            src={Clock0}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+          <img
+            src={Clock1}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+        </Marquee>
       </div>
       <div className="container page">
-        <img src={Log} alt="DevBoard" className="img main-img"></img>
+        <Marquee
+          gradient={false}
+          speed={50}
+          pauseOnHover={true}
+          pauseOnClick={true}
+          delay={0}
+          play={true}
+          direction="left"
+        >
+          <img
+            src={Log0}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+          <img
+            src={Log1}
+            alt="DevBoard"
+            className="img main-img w-500 h-500"
+          ></img>
+        </Marquee>
         <div className="info">
           <h1>Daily Logger</h1>
           <h3>
