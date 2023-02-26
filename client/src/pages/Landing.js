@@ -5,13 +5,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Main from "../assets/images/main-alternative.svg";
 import Wrapper from "../assets/wrappers/LandingPage";
 import { Logo } from "../components";
-import Todo0 from "../assets/images/Landing-Todo-0.png";
-import Log0 from "../assets/images/Landing-Log-0.png";
-import Log1 from "../assets/images/Landing-Log-1.png";
-import Clock0 from "../assets/images/Landing-Clock-0.png";
-import Clock1 from "../assets/images/Landing-Clock-1.png";
-import Todo1 from "../assets/images/Landing-Todo-1.png";
-import Todo2 from "../assets/images/Landing-Todo-2.png";
+import Logger from "../assets/images/log.svg";
+import Todo from "../assets/images/todo.svg";
+import Pomodoro from "../assets/images/pomodoro.svg";
 import Job from "../assets/images/job.svg";
 import Bookmark from "../assets/images/bookmark.svg";
 import Activity from "../assets/images/workgraph.svg";
@@ -38,31 +34,7 @@ const Landing = () => {
         <img src={Main} alt="DevBoard" className="img main-img"></img>
       </div>
       <div className="container page">
-        <Marquee
-          gradient={false}
-          speed={180}
-          pauseOnHover={true}
-          pauseOnClick={true}
-          delay={0}
-          play={true}
-          direction="left"
-        >
-          <img
-            src={Todo0}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-          <img
-            src={Todo1}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-          <img
-            src={Todo2}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-        </Marquee>
+        <img src={Todo} alt="DevBoard" className="img main-img"></img>
 
         <div className="info">
           <h1>Todo List</h1>
@@ -77,48 +49,11 @@ const Landing = () => {
             to re-train your brains to focus.
           </h3>
         </div>
-        <Marquee
-          gradient={false}
-          speed={80}
-          pauseOnHover={true}
-          pauseOnClick={true}
-          delay={0}
-          play={true}
-          direction="left"
-        >
-          <img
-            src={Clock0}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-          <img
-            src={Clock1}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-        </Marquee>
+        <img src={Pomodoro} alt="DevBoard" className="img main-img"></img>
       </div>
       <div className="container page">
-        <Marquee
-          gradient={false}
-          speed={50}
-          pauseOnHover={true}
-          pauseOnClick={true}
-          delay={0}
-          play={true}
-          direction="left"
-        >
-          <img
-            src={Log0}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-          <img
-            src={Log1}
-            alt="DevBoard"
-            className="img main-img w-500 h-500"
-          ></img>
-        </Marquee>
+        <img src={Logger} alt="DevBoard" className="img main-img"></img>
+
         <div className="info">
           <h1>Daily Logger</h1>
           <h3>
