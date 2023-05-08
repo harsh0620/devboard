@@ -8,9 +8,10 @@
     "node": "14.x"
   },
   "scripts": {
+    "start": "node server.js",
     "server": "nodemon server --ignore client",
     "client": "npm start --prefix client",
-    "start": "node server"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
